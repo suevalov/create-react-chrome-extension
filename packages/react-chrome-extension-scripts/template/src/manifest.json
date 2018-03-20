@@ -1,0 +1,17 @@
+{
+  "name": "create-react-chrome-extension",
+  "background": {
+    "page": "background.html",
+    "persistent": false
+  },
+  "icons": {
+    "128": "static/icon-128.png"
+  },
+  "browser_action": {
+    "default_icon": "static/icon-128.png",
+    "default_popup": "browser_action_popup.html"
+  },
+  "permissions": [],
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
