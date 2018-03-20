@@ -49,7 +49,7 @@ function createExtension(name, verbose, version) {
   }
   fs.ensureDirSync(name);
 
-  console.log(`Creating a new React app in ${chalk.green(root)}.`);
+  console.log(`Creating a new Chrome extension in ${chalk.green(root)}.`);
   console.log();
 
   fs.writeFileSync(
@@ -105,7 +105,7 @@ function install(root, dependencies, verbose, isDev) {
 
 function run(root, appName, version, verbose) {
   const allDependencies = [
-    "file:/Users/suevalov/dev/create-react-chrome-extension/packages/react-chrome-extension-scripts",
+    "react-chrome-extension-scripts",
     "react",
     "react-dom"
   ];
