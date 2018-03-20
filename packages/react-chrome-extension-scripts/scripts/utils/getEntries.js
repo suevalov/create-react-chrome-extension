@@ -1,56 +1,12 @@
 /* eslint-disable no-await-in-loop,import/no-dynamic-require */
 
 const glob = require("glob");
-const get = require("lodash.get");
+const paths = require("./paths");
 const fileExists = require("file-exists");
 const fileName = require("file-name");
-const paths = require("./paths");
+const getManifestValues = require("./getManifestValues");
 
-const manifest = require(paths.manifest);
-
-const possibilities = [
-  {
-    name: "browser_action",
-    folder: "browser_action",
-    manifest: () => get(manifest, "browser_action.default_popup")
-  },
-  {
-    name: "page_action",
-    folder: "page_action",
-    manifest: () => get(manifest, "page_action.default_popup")
-  },
-  {
-    name: "bookmarks",
-    folder: "bookmarks",
-    manifest: () => get(manifest, "chrome_url_overrides.bookmarks")
-  },
-  {
-    name: "history",
-    folder: "history",
-    manifest: () => get(manifest, "chrome_url_overrides.history")
-  },
-  {
-    name: "newtab",
-    folder: "newtab",
-    manifest: () => get(manifest, "chrome_url_overrides.newtab")
-  },
-  {
-    name: "devtools",
-    folder: "devtools",
-    manifest: () => get(manifest, "devtools_page")
-  },
-  {
-    name: "background",
-    folder: "background",
-    manifest: () => get(manifest, "background.page")
-  },
-  {
-    name: "options",
-    folder: "options",
-    manifest: () =>
-      get(manifest, "options_ui.page") || get(manifest, "options_page")
-  }
-];
+const manifestValues = getManifestValues();
 
 // options
 
@@ -135,8 +91,8 @@ const getOtherEntires = async () => {
 
 module.exports = async () => {
   const entries = [];
-  for (let i = 0; i < possibilities.length; i += 1) {
-    const entry = await getEntry(possibilities[i]);
+  for (let i = 0; i < manifestValues.length; i += 1) {
+    const entry = await getEntry(manifestValues[i]);
     if (entry) {
       entries.push(entry);
     }
