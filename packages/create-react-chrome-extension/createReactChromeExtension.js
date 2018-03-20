@@ -69,10 +69,13 @@ function createExtension(name, verbose, version) {
   run(root, appName, version, verbose, originalDirectory);
 }
 
-function install(root, dependencies, verbose) {
+function install(root, dependencies, verbose, isDev) {
   return new Promise((resolve, reject) => {
     const command = "yarnpkg";
     const args = ["add", "--exact"];
+    if (isDev) {
+      args.push("--dev");
+    }
     [].push.apply(args, dependencies);
 
     // Explicitly set cwd() to work around issues like
@@ -102,13 +105,19 @@ function install(root, dependencies, verbose) {
 
 function run(root, appName, version, verbose) {
   const allDependencies = [
-    "file:/Users/suevalov/dev/create-react-chrome-extension/packages/react-chrome-extension-scripts"
+    "file:/Users/suevalov/dev/create-react-chrome-extension/packages/react-chrome-extension-scripts",
+    "react",
+    "react-dom"
   ];
+
+  const devDependencies = ["lint-staged", "husky", "prettier"];
 
   console.log("Installing packages. This might take a couple of minutes.");
 
-  return install(root, allDependencies, verbose).then(() => {
-    const init = require(`${root}/node_modules/react-chrome-extension-scripts/scripts/init.js`);
-    init(root, appName, verbose);
-  });
+  return install(root, devDependencies, verbose, true).then(() =>
+    install(root, allDependencies, verbose, false).then(() => {
+      const init = require(`${root}/node_modules/react-chrome-extension-scripts/scripts/init.js`);
+      init(root, appName, verbose);
+    })
+  );
 }

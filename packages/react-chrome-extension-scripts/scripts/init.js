@@ -3,7 +3,6 @@
 const path = require("path");
 const fs = require("fs-extra");
 const os = require("os");
-const spawn = require("cross-spawn");
 const execSync = require("child_process").execSync;
 const chalk = require("chalk");
 
@@ -108,19 +107,6 @@ module.exports = (appPath, appName, originalDirectory) => {
   if (tryGitInit(appPath)) {
     console.log();
     console.log("Initialized a git repository.");
-  }
-
-  const command = "yarnpkg";
-  const args = ["add", "--exact"];
-  args.push("react", "react-dom", "lint-staged", "husky", "prettier");
-
-  console.log(`Installing react and react-dom using ${command}...`);
-  console.log();
-
-  const proc = spawn.sync(command, args, { stdio: "inherit" });
-  if (proc.status !== 0) {
-    console.error(`\`${command} ${args.join(" ")}\` failed`);
-    return;
   }
 
   // Display the most elegant way to cd.
