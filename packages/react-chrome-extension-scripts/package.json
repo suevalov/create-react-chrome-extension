@@ -9,13 +9,16 @@
     "react",
     "hot reload"
   ],
+  "author": "Alexander Suevalov <suevalov.work@gmail.com>",
+  "repository": "https://github.com/suevalov/create-react-chrome-extension",
   "license": "MIT",
   "engines": {
     "node": ">=8"
   },
   "files": [
     "bin",
-    "scripts"
+    "scripts",
+    "template"
   ],
   "dependencies": {
     "babel-core": "6.26.0",
