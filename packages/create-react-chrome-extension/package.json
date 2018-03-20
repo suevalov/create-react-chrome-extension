@@ -9,8 +9,8 @@
 		"react",
 		"hot reload"
 	],
-  "author": "Alexander Suevalov <suevalov.work@gmail.com>",
-  "repository": "https://github.com/suevalov/create-react-chrome-extension",
+	"author": "Alexander Suevalov <suevalov.work@gmail.com>",
+	"repository": "https://github.com/suevalov/create-react-chrome-extension",
 	"description": "Create Chromium extensions with zero configuration",
 	"license": "MIT",
 	"engines": {
@@ -24,9 +24,9 @@
 		"create-react-chrome-extension": "./index.js"
 	},
 	"dependencies": {
-    "fs-extra": "5.0.0",
-    "cross-spawn": "6.0.5",
 		"chalk": "1.1.3",
-		"commander": "2.9.0"
+		"commander": "2.9.0",
+		"cross-spawn": "6.0.5",
+		"fs-extra": "5.0.0"
 	}
 }
