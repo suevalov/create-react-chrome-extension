@@ -1,0 +1,15 @@
+{
+    "extends": [
+        "airbnb",
+        "prettier",
+        "prettier/react"
+    ],
+    "globals": {
+        "chrome": true,
+        "window": true
+    },
+    "rules": {
+        "react/jsx-filename-extension": "off",
+        "import/no-extraneous-dependencies": "off"
+    }
+}
