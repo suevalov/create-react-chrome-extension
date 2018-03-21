@@ -7,7 +7,9 @@ const fileName = require("file-name");
 const { manifestValues, readManifestValue } = require("./getManifestValues");
 
 const getEntry = async params => {
-  const pageName = readManifestValue(params.name);
+  const pageName = params.manifest
+    ? readManifestValue(params.name)
+    : params.name;
   if (!pageName) {
     return null;
   }
@@ -75,8 +77,7 @@ const getOtherEntires = async () => {
     const name = fileName(file);
     const entry = await getEntry({
       name,
-      folder: "entries",
-      manifest: () => `${name}.html`
+      folder: "entries"
     });
     if (entry) {
       result.push(entry);
