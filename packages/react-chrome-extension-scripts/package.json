@@ -39,6 +39,8 @@
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.0.6",
     "lodash.get": "4.4.2",
+    "lodash.find": "4.6.0",
+    "lodash.set": "4.3.2",
     "prompts": "0.1.8",
     "react-hot-loader": "4.0.0",
     "redbox-react": "1.5.0",

@@ -4,14 +4,10 @@ const glob = require("glob");
 const paths = require("./paths");
 const fileExists = require("file-exists");
 const fileName = require("file-name");
-const getManifestValues = require("./getManifestValues");
-
-const manifestValues = getManifestValues();
-
-// options
+const { manifestValues, readManifestValue } = require("./getManifestValues");
 
 const getEntry = async params => {
-  const pageName = params.manifest();
+  const pageName = readManifestValue(params.name);
   if (!pageName) {
     return null;
   }
