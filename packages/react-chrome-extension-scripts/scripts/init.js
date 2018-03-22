@@ -15,6 +15,7 @@ module.exports = (appPath, appName, originalDirectory) => {
   appPackage.scripts = {
     start: "react-chrome-extension-scripts start",
     build: "react-chrome-extension-scripts build",
+    generate: "react-chrome-extension-scripts generate",
     precommit: "lint-staged"
   };
   appPackage["lint-staged"] = {
@@ -72,6 +73,9 @@ module.exports = (appPath, appName, originalDirectory) => {
   console.log();
   console.log(chalk.cyan(`  ${displayedCommand} build`));
   console.log("    Bundles the app into static files for production.");
+  console.log();
+  console.log(chalk.cyan(`  ${displayedCommand} generate`));
+  console.log("    Generates modules for your extension.");
   console.log();
   console.log("We suggest that you begin by typing:");
   console.log();
